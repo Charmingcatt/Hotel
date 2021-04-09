@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.app.mapper.HouseDAO"> 
+    <select id="getHouseById"  resultType="com.app.entity.House">
+        select
+        * from House where `id`=#{id}
+    </select>
+    <delete id="delete">
+		delete from House where id=#{id}
+	</delete>
+    <select id="getHouseCount" resultType="int">
+        select count(id) from House
+    </select>
+    <select id="getAllHouse" resultType="com.app.entity.House">
+        select * from House
+    </select>
+    <insert id="insert" parameterType="com.app.entity.House">
+        insert into
+        House(price2,rooname,size,thunb,price,description,created,content,lat,lng,userid,username,pid,cid,aid,state,address,cate) 
+        values(#{price2},#{rooname},#{size},#{thunb},#{price},#{description},#{created},#{content},#{lat},#{lng},#{userid},#{username},#{pid},#{cid},#{aid},#{state},#{address},#{cate});
+    </insert>
+        
+    <update id="update" parameterType="com.app.entity.House">
+		update House set price2=#{price2},rooname=#{rooname},size=#{size},thunb=#{thunb},price=#{price},description=#{description},created=#{created},content=#{content},lat=#{lat},lng=#{lng},userid=#{userid},username=#{username},pid=#{pid},cid=#{cid},aid=#{aid},state=#{state},address=#{address},cate=#{cate} where id=#{id}
+	</update>
+        </mapper>

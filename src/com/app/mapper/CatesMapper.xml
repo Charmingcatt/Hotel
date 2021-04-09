@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.app.mapper.CatesDAO"> 
+    <select id="getCatesById"  resultType="com.app.entity.Cates">
+        select
+        * from Cates where id=#{id}
+    </select>
+    <delete id="delete">
+		delete from Cates where id=#{id}
+	</delete>
+    <select id="getCatesCount" resultType="int">
+        select count(id) from Cates
+    </select>
+    <select id="getAllCates" resultType="com.app.entity.Cates">
+        select * from Cates
+    </select>
+     <select id="getByPid" resultType="com.app.entity.Cates">
+        select * from Cates where pid=#{pid}
+    </select>
+    <insert id="insert" parameterType="com.app.entity.Cates">
+        insert into
+        Cates(title,thumb,description,created,updated,type,status,pid) 
+        values(#{title},#{thumb},#{description},#{created},#{updated},#{type},#{status},#{pid});
+    </insert>
+        
+    <update id="update" parameterType="com.app.entity.Cates">
+		update Cates set title=#{title},thumb=#{thumb},description=#{description},created=#{created},updated=#{updated},type=#{type},status=#{status},pid=#{pid} where id=#{id}
+	</update>
+        </mapper>

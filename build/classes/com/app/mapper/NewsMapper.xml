@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.app.mapper.NewsDAO"> 
+    <select id="getNewsById"  resultType="com.app.entity.News">
+        select
+        * from News where id=#{id}
+    </select>
+    <delete id="delete">
+		delete from News where id=#{id}
+	</delete>
+    <select id="getNewsCount" resultType="int">
+        select count(id) from News
+    </select>
+    <select id="getAllNews" resultType="com.app.entity.News">
+        select * from News
+    </select>
+    <select id="getNewsByCate" resultType="com.app.entity.News">
+        select * from News where cateid=#{cateid}
+    </select>
+    <insert id="insert" parameterType="com.app.entity.News">
+        insert into
+        News(title,description,contents,thumb,cateid,created,click,province,city,area,userid,address,zan,fav,attachfile) 
+        values(#{title},#{description},#{contents},#{thumb},#{cateid},#{created},#{click},#{province},#{city},#{area},#{userid},#{address},#{zan},#{fav},#{attachfile});
+    </insert>
+        
+    <update id="update" parameterType="com.app.entity.News">
+		update News set title=#{title},description=#{description},contents=#{contents},thumb=#{thumb},cateid=#{cateid},created=#{created},click=#{click},province=#{province},city=#{city},area=#{area},userid=#{userid},address=#{address},zan=#{zan},fav=#{fav},attachfile=#{attachfile} where id=#{id}
+	</update>
+        </mapper>

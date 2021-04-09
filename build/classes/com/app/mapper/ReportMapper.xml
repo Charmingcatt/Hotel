@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.app.mapper.ReportDAO"> 
+    <select id="getReportById"  resultType="com.app.entity.Report">
+        select
+        * from Report where `id`=#{id}
+    </select>
+    <delete id="delete">
+		delete from Report where id=#{id}
+	</delete>
+    <select id="getReportCount" resultType="int">
+        select count(id) from Report
+    </select>
+    <select id="getAllReport" resultType="com.app.entity.Report">
+        select * from Report
+    </select>
+    <insert id="insert" parameterType="com.app.entity.Report">
+        insert into
+        Report(content,userid,mid,created,state,) 
+        values(#{content},#{userid},#{mid},#{created},#{state},);
+    </insert>
+        
+    <update id="update" parameterType="com.app.entity.Report">
+		update Report set content=#{content},userid=#{userid},mid=#{mid},created=#{created},state=#{state}, where id=#{id}
+	</update>
+        </mapper>

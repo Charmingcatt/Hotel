@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.app.mapper.ApplyDAO"> 
+    <select id="getApplyById"  resultType="com.app.entity.Apply">
+        select
+        * from Apply where id=#{id}
+    </select>
+    <delete id="delete">
+		delete from Apply where id=#{id}
+	</delete>
+    <select id="getApplyCount" resultType="int">
+        select count(id) from Apply
+    </select>
+    <select id="getAllApply" resultType="com.app.entity.Apply">
+        select * from Apply
+    </select>
+     <select id="getApplyBy" resultType="com.app.entity.Apply">
+        select * from Apply where hid=#{hid}
+    </select>
+     <select id="getApplyByUserid" resultType="com.app.entity.Apply">
+        select * from Apply where userid=#{userid}
+    </select>
+    <insert id="insert" parameterType="com.app.entity.Apply">
+        insert into
+        Apply(indate,outdate,username,idcard,tel,sex,hid,userid,state,type,created,attachfile,stateid,pid,cid,aid,message) 
+        values(#{indate},#{outdate},#{username},#{idcard},#{tel},#{sex},#{hid},#{userid},#{state},#{type},#{created},#{attachfile},#{stateid},#{pid},#{cid},#{aid},#{message});
+    </insert>
+        
+    <update id="update" parameterType="com.app.entity.Apply">
+		update Apply set indate=#{indate},outdate=#{outdate},username=#{username},idcard=#{idcard},tel=#{tel},sex=#{sex},hid=#{hid},userid=#{userid},state=#{state},type=#{type},created=#{created},attachfile=#{attachfile},stateid=#{stateid},pid=#{pid},cid=#{cid},aid=#{aid},message=#{message} where id=#{id}
+	</update>
+        </mapper>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.app.mapper.RegionDAO"> 
+    <select id="getRegionById"  resultType="com.app.entity.Region">
+        select
+        * from Region where `id`=#{id}
+    </select>
+    <delete id="delete">
+		delete from Region where id=#{id}
+	</delete>
+    <select id="getRegionCount" resultType="int">
+        select count(id) from Region
+    </select>
+    <select id="getAllRegion" resultType="com.app.entity.Region">
+        select * from Region
+    </select>
+    <insert id="insert" parameterType="com.app.entity.Region">
+        insert into
+        Region(parent_id,region_name,region_type,agency_id,) 
+        values(#{parent_id},#{region_name},#{region_type},#{agency_id},);
+    </insert>
+        
+    <update id="update" parameterType="com.app.entity.Region">
+		update Region set parent_id=#{parent_id},region_name=#{region_name},region_type=#{region_type},agency_id=#{agency_id}, where id=#{id}
+	</update>
+        </mapper>
